@@ -27,4 +27,16 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+    public function updateTitle($id, $title) {
+        $sql = "UPDATE {$this->tableName} SET title = :title WHERE id_topic = :id";
+        DAO::update($sql, ['title' => $title, 'id' => $id]);
+    }
+
+    public function deleteTopicById($id) {
+        $sql = "DELETE FROM {$this->tableName} WHERE id_post = :id";
+        DAO::delete($sql, ['id' => $id]);
+        header("Location: index.php?ctrl=forum&action=index");
+exit();
+    }
+    
 }

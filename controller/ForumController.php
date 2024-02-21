@@ -93,10 +93,11 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
     public function editPost($id) {
         $postManager = new PostManager();
         $post = $postManager->findOneById($id);
-
+    
         return [
             "view" => VIEW_DIR . "forum/editPost.php",
             "meta_description" => "Modifier le post",
@@ -104,6 +105,15 @@ class ForumController extends AbstractController implements ControllerInterface{
                 "post" => $post
             ]
         ];
+    }
+    
+    public function updatePost($id, $text) {
+        $postManager = new PostManager();
+        $postManager->updateText($id, $text);
+    
+        
+        header("Location: index.php?ctrl=forum&action=index");
+        exit();
     }
 
     public function confirmDeletePost($id) {
@@ -119,17 +129,6 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function updatePost($id) {
-        $postManager = new PostManager();
-        $post = $postManager->findOneById($id);
-
-        if (isset($_POST['text'])) {
-            $text = $_POST['text'];
-            $postManager->updateText($id, $text);
-            header("Location: index.php?ctrl=forum&action=listPostsByTopic&Id=" . $post->getTopic()->getId());
-            exit();
-        }
-    }
 
     public function deletePost($id) {
         $postManager = new PostManager();
@@ -141,5 +140,54 @@ class ForumController extends AbstractController implements ControllerInterface{
             exit();
         }
     }
+
+
+    public function editTopic($id) {
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+    
+        return [
+            "view" => VIEW_DIR . "forum/editTopic.php",
+            "meta_description" => "Modifier le topic",
+            "data" => [
+                "topic" => $topic
+            ]
+        ];
+    }
+    
+    public function updateTopic($id, $title) {
+        $topicManager = new TopicManager();
+        $topicManager->updateTitle($id, $title);
+    
+        header("Location: index.php?ctrl=forum&action=index");
+        exit();
+    }
+    
+
+    public function confirmDeleteTopic($id) {
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+
+        return [
+            "view" => VIEW_DIR . "forum/confirmDeleteTopic.php",
+            "meta_description" => "Supprimer le topic",
+            "data" => [
+                "topic" => $topic
+            ]
+        ];
+    }
+
+
+    public function deleteTopic($id) {
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+
+        if (isset($_POST['confirm_delete'])) {
+            $topicManager->deleteTopicById($id);
+            header("Location: index.php?ctrl=forum&action=listPostsByTopic&Id=" . $topic->getTitle()->getId());
+            exit();
+        }
+    }
+
 }
 

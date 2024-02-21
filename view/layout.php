@@ -38,7 +38,7 @@
                             else{
                                 ?>
                                 <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=register">Inscription</a>
+                                <a href="index.php?ctrl=security&action=registerForm">Inscription</a>
                                 <a href="index.php?ctrl=forum&action=listCategory">Liste des catégories</a>
                                <!-- <a href="index.php?ctrl=forum&action=listposts">Liste des posts</a> -->
                                <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a>

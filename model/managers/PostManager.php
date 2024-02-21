@@ -39,12 +39,14 @@ class PostManager extends Manager{
 
 
         public function updateText($id, $text) {
-            $sql = "UPDATE {$this->tableName} SET text = :text WHERE id = :id";
+            $sql = "UPDATE {$this->tableName} SET text = :text WHERE id_post = :id";
             DAO::update($sql, ['text' => $text, 'id' => $id]);
         }
     
         public function deleteById($id) {
-            $sql = "DELETE FROM {$this->tableName} WHERE id = :id";
+            $sql = "DELETE FROM {$this->tableName} WHERE id_post = :id";
             DAO::delete($sql, ['id' => $id]);
+            header("Location: index.php?ctrl=forum&action=index");
+exit();
         }
     }
