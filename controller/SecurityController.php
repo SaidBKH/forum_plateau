@@ -18,6 +18,7 @@ class SecurityController extends AbstractController{
     ];
 }
 
+
 public function register() {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
