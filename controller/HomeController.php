@@ -12,8 +12,8 @@ class HomeController extends AbstractController implements ControllerInterface {
             "view" => VIEW_DIR."home.php",
             "meta_description" => "Page d'accueil du forum"
         ];
-    }
-        
+    }     
+    
     public function users(){
         $this->restrictTo("ROLE_USER");
 
