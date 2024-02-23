@@ -28,6 +28,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
+    
     public function listTopicsByCategory($id) {
 
         $topicManager = new TopicManager();
@@ -44,6 +45,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
     public function listPostsByTopic($id) {
         $postManager = new PostManager();
         $topicManager = new TopicManager();
@@ -59,6 +61,8 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+
     public function listUser() {
         
         // créer une nouvelle instance de CategoryManager
@@ -94,27 +98,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function editPost($id) {
-        $postManager = new PostManager();
-        $post = $postManager->findOneById($id);
-    
-        return [
-            "view" => VIEW_DIR . "forum/editPost.php",
-            "meta_description" => "Modifier le post",
-            "data" => [
-                "post" => $post
-            ]
-        ];
-    }
-    
-    public function updatePost($id, $text) {
-        $postManager = new PostManager();
-        $postManager->updateText($id, $text);
-    
-        
-        header("Location: index.php?ctrl=forum&action=index");
-        exit();
-    }
+
 
     public function confirmDeletePost($id) {
         $postManager = new PostManager();
@@ -129,7 +113,6 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-
     public function deletePost($id) {
         $postManager = new PostManager();
         $post = $postManager->findOneById($id);
@@ -142,27 +125,6 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
 
-    public function editTopic($id) {
-        $topicManager = new TopicManager();
-        $topic = $topicManager->findOneById($id);
-    
-        return [
-            "view" => VIEW_DIR . "forum/editTopic.php",
-            "meta_description" => "Modifier le topic",
-            "data" => [
-                "topic" => $topic
-            ]
-        ];
-    }
-    
-    public function updateTopic($id, $title) {
-        $topicManager = new TopicManager();
-        $topicManager->updateTitle($id, $title);
-    
-        header("Location: index.php?ctrl=forum&action=index");
-        exit();
-    }
-    
 
     public function confirmDeleteTopic($id) {
         $topicManager = new TopicManager();
@@ -177,7 +139,6 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-
     public function deleteTopic($id) {
         $topicManager = new TopicManager();
         $topic = $topicManager->findOneById($id);
@@ -189,5 +150,56 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 
+    public function editPost($id) {
+        $postManager = new PostManager();
+        $post = $postManager->findOneById($id);
+    
+        return [
+            "view" => VIEW_DIR . "forum/editPost.php",
+            "meta_description" => "Modifier le post",
+            "data" => [
+                "post" => $post
+            ]
+        ];
+    }
+
+    public function updatePost($id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS);
+            if ($text !== false) {
+                $postManager = new PostManager();
+                $postManager->updateText($id, $text);
+                header("Location: index.php?ctrl=forum&action=index");
+              exit();
+            }
+        }
+    }
+
+    public function editTopic($id) {
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id);
+    
+        return [
+            "view" => VIEW_DIR . "forum/editTopic.php",
+            "meta_description" => "Modifier le topic",
+            "data" => [
+                "topic" => $topic
+            ]
+        ];
+    }
+    
+    public function updateTopic($id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
+            if ($title !== false) {
+                $topicManager = new TopicManager();
+                $topicManager->updateTitle($id, $title);
+                header("Location: index.php?ctrl=forum&action=index");
+              exit();
+            }
+        }
+    }
 }
+
+
 

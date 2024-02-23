@@ -13,5 +13,12 @@ class UserManager extends Manager{
     public function __construct(){
         parent::connect();
     }
+  
+    public function emailExist($email) {
+        $sql = "SELECT email FROM user WHERE email = :email LIMIT 1";
+        $donnee = ['email' => $email];
+        $result = DAO::select($sql, $donnee);
 
+        return !empty($result);
+    }
 }

@@ -25,7 +25,7 @@ class PostManager extends Manager{
         );
     }
 
-    
+
     public function findPostsByUser($id) {
 
         $sql = "SELECT * 
@@ -36,7 +36,6 @@ class PostManager extends Manager{
             DAO::select($sql, ['id' => $id]), 
             'Model\Entities\Post'        );
     }
-
 
         public function updateText($id, $text) {
             $sql = "UPDATE {$this->tableName} SET text = :text WHERE id_post = :id";
