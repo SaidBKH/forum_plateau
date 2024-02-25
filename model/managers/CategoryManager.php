@@ -13,8 +13,11 @@ class CategoryManager extends Manager{
     public function __construct(){
         parent::connect();
     }
-    public function addCategory($id, $name) {
-        $sql = "INSERT INTO {$this->tableName} SET name = :name";
-        DAO::insert($sql, ['name' => $name, 'id' => $id]);
+    public function addCategory($name) {
+        $sql = "INSERT INTO {$this->tableName} (name) VALUES (:name)";
+        DAO::insert($sql, ['name' => $name]);
     }
+
+
+
 }

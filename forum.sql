@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 
 
 -- Listage des données de la table forum.category : ~0 rows (environ)
 INSERT INTO `category` (`id_category`, `name`) VALUES
@@ -34,7 +34,6 @@ INSERT INTO `category` (`id_category`, `name`) VALUES
 	(4, 'Cuisine'),
 	(5, 'Mode');
 
--- Listage de la structure de table forum. post
 CREATE TABLE IF NOT EXISTS `post` (
   `id_post` int NOT NULL AUTO_INCREMENT,
   `text` varchar(50) DEFAULT NULL,
@@ -43,10 +42,8 @@ CREATE TABLE IF NOT EXISTS `post` (
   `topic_id` int DEFAULT NULL,
   PRIMARY KEY (`id_post`),
   KEY `user_id` (`user_id`),
-  KEY `topic_id` (`topic_id`),
-  CONSTRAINT `topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `topic_id` (`topic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table forum.post : ~0 rows (environ)
 INSERT INTO `post` (`id_post`, `text`, `creationDate`, `user_id`, `topic_id`) VALUES

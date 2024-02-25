@@ -27,13 +27,19 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
-    public function addCategory() {
+   
+    public function addCategoryForm($id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'])) {
+            $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_SPECIAL_CHARS );
+            $categoryManager = new CategoryManager();
+            $categoryManager->addCategory($id,$name);
+        }
         return [
-            "view" => VIEW_DIR . "category/addCategory.php",
-            "meta_description" => "Ajouter une nouvelle catégorie"
+            "view" => VIEW_DIR."forum/addcategoryForm.php",
+            "meta_description" => "add categoryForm",
+           
         ];
-    }
-
+    }   
     
     public function listTopicsByCategory($id) {
 
