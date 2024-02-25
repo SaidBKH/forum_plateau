@@ -27,6 +27,12 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+    public function addCategory() {
+        return [
+            "view" => VIEW_DIR . "category/addCategory.php",
+            "meta_description" => "Ajouter une nouvelle catégorie"
+        ];
+    }
 
     
     public function listTopicsByCategory($id) {
@@ -45,6 +51,8 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+
 
     public function listPostsByTopic($id) {
         $postManager = new PostManager();
