@@ -17,39 +17,29 @@
                 <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
                 <header>
-                    <nav>
-                        <div id="nav-left">
-                            <a href="/">Accueil</a>
-                            <?php
-                            if(App\Session::isAdmin()){
-                                ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                            <?php } ?>
-                        </div>
-                        <div id="nav-right">
-                        <?php
-                            // si l'utilisateur est connecté 
-                            if(App\Session::getUser()){
-                                ?>
-                                <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                                <?php
-                            }
-                            else{
-                                ?>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=registerForm">Inscription</a>
-                                <a href="index.php?ctrl=forum&action=listCategory">Liste des catégories</a>
-                               <!-- <a href="index.php?ctrl=forum&action=listposts">Liste des posts</a> -->
-                               <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a>
-                             <!--   <a href="index.php?ctrl=forum&action=listTopics">Liste des topics</a> -->
+                        <nav>
+                            <div id="nav-left">
+                                <a href="/">Accueil</a>
+                                <?php if(App\Session::isAdmin()): ?>
+                                    
+                                    <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                                <?php endif; ?>
+                            </div>
 
-                            <?php
-                            }
-                        ?>
-                        </div>
-                    </nav>
+                            <div id="nav-right">
+                                <?php if(App\Session::getUser()): ?>
+                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getNickName() ?></a>
+                                    <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                                <?php else: ?>
+                                    <a href="index.php?ctrl=security&action=loginForm">Connexion</a>
+                                    <a href="index.php?ctrl=security&action=registerForm">Inscription</a>
+                                <?php endif; ?>
+                                <a href="index.php?ctrl=forum&action=listCategory">Liste des catégories</a>
+                                <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a>
+                            </div>
+                        </nav>
                 </header>
+
                 
                 <main id="forum">
                     <?= $page ?>

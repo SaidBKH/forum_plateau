@@ -21,4 +21,20 @@ class UserManager extends Manager{
 
         return !empty($result);
     }
+
+ //   public function findByEmail($email) {
+ //       $sql = "SELECT * FROM user WHERE email = :email";
+ //       return $this->getOneOrNullResult(
+ //           DAO::select($sql, ['email' => $email]), 
+ //           'Model\Entities\User'
+ //       );
+
+ public function findByEmail($email) {
+    $sql = "SELECT * FROM ".$this->tableName." WHERE email = :email";
+    return $this->getOneOrNullResult(
+        DAO::select($sql, ['email' => $email, ],false), 
+        $this->className
+    );
+}
+
 }

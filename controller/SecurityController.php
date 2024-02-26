@@ -4,6 +4,7 @@ namespace Controller;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
+use Model\Entities\User;
 
 class SecurityController extends AbstractController{
     // contiendra les méthodes liées à l'authentification : register, login et logout
@@ -61,5 +62,54 @@ class SecurityController extends AbstractController{
                 }
             } 
         }
+    }
+
+    public function loginForm() {
+        return [
+            "view" => VIEW_DIR . "security/loginForm.php",
+            "meta_description" => "Formulaire de connexion"
+        ];
+    }
+
+    public function login() {
+        $userManager = new UserManager();
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+
+            if ($email && $password) {
+                // Vérifier si l'email existe 
+
+                if ($userManager->emailExist($email)) {
+
+                    // Récupérer l'user grace à l'e-mail
+                    $user = $userManager->findByEmail($email);
+                    //var_dump($user);die;
+
+                    // Vérifie mdp 
+                    if ($user && password_verify($password, $user->getPassword())) {
+                        $_SESSION['user'] = $user;
+                        $this->redirectTo("home", "index");
+                    } else {
+                        echo "Mot de passe incorrect";
+                    }
+                } else {
+                    echo "L'email n'existe pas";
+                }
+            } 
+        }
+        return ["view" => VIEW_DIR . "security/login.php",
+         "meta_description" => "Formulaire de connexion"
+    ];
+
+    }
+
+    public function logout() {
+        $_SESSION[] = session_unset();
+        return ["view" => VIEW_DIR . "security/login.php",
+         "meta_description" => "Formulaire de connexion"
+    ];
+    
     }
 }

@@ -9,6 +9,7 @@ use Model\Managers\PostManager;
 use Model\Managers\TopicManager;
 use Model\Managers\UserManager;
 
+
 class ForumController extends AbstractController implements ControllerInterface{
 
     public function index() {
@@ -27,19 +28,60 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
-   
-    public function addCategoryForm($id) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'])) {
-            $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_SPECIAL_CHARS );
-            $categoryManager = new CategoryManager();
-            $categoryManager->addCategory($id,$name);
+  
+    
+    public function addPost() {
+
+        $postManager = new PostManager();   
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS);
+            $topicId = $_POST['topic_id'];
+
+            $postManager->add([
+                            "text" => $text,
+                            "topic_id" => $topicId,
+                            "user_id" => $_SESSION['user']->getId()
+                           
+            ]);
+                    $this->redirectTo("forum", "listPosts", ["id" => $topicId]);
         }
-        return [
-            "view" => VIEW_DIR."forum/addcategoryForm.php",
-            "meta_description" => "add categoryForm",
+     } 
+
+     public function addTopic() {
+
+        $topicManager = new TopicManager();   
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS);
+            $categoryId = filter_input(INPUT_POST, "category_id", FILTER_SANITIZE_NUMBER_INT);
+            $topicId = filter_input(INPUT_POST, "topic_id", FILTER_SANITIZE_NUMBER_INT);
+            $postId = filter_input(INPUT_POST, "post_id", FILTER_SANITIZE_NUMBER_INT);
+
+
+
+           $topicId = $topicManager->add([
+                            "title"=>$title,
+                            "category_id" => $categoryId,
+                            "user_id" => $_SESSION['user']->getId()         
+            ]);
+
+             $PostManager = new PostManager();   
+            
+           $postId = $PostManager->add([
+                "text"=>$text,
+                "topic_id" => $topicId,
+                "user_id" => $_SESSION['user']->getId()          
+]);
            
-        ];
-    }   
+                    $this->redirectTo("forum", "listTopics");
+        }
+     } 
+    
+   
     
     public function listTopicsByCategory($id) {
 
@@ -214,6 +256,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 }
+
 
 
 

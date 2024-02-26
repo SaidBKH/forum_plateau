@@ -84,7 +84,7 @@ final class User extends Entity{
         return $this;
     }
 
-    public function getPasswotd(){
+    public function getPassword(){
         return $this->password;
     }
 
@@ -94,12 +94,16 @@ final class User extends Entity{
      * @return  self
      */ 
     public function setPassword($password){
-        $this->role = $password;
+        $this->password = $password;
 
         return $this;
     }
 
     public function __toString() {
         return $this->nickname;
+    }
+
+    public function hasRole($role) {
+        return $this->role === $role;
     }
 }

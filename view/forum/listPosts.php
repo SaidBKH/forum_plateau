@@ -5,7 +5,8 @@
     $posts = $result["data"]['posts']; 
 ?>
 
-<h1>Liste des posts</h1>
+<h1><?= $topic->getTitle() ?></h1>
+
 
 <ul>
     <?php foreach ($posts as $post): ?>
@@ -16,5 +17,13 @@
         </li>
     <?php endforeach; ?>
 </ul>
+
+<h2>Ajouter un message</h2>
+<form action="index.php?ctrl=forum&action=addPost" method="post">
+    <input type="hidden" name="topic_id" value="<?= $topic->getId() ?>">
+    <textarea name="text" rows="4" cols="50" required></textarea><br>
+    <button type="submit">Envoyer</button>
+</form>
+
 
 <?php 

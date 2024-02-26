@@ -16,3 +16,16 @@
         </li>
     <?php endforeach; ?>
 </ul>
+
+<h2>Ajouter un nouveau topic</h2>
+<form action="index.php?ctrl=forum&action=addTopic" method="post">
+    <label for="title">Titre du topic :</label><br>
+    <input type="text" id="title" name="title" required><br>
+
+    <label for="text">Premier message :</label><br>
+    <textarea id="text" name="text" rows="4" cols="50" required></textarea><br>
+
+    <input type="hidden" name="category_id" value="<?= $categoryId ?>">
+
+    <button type="submit">Créer le topic</button>
+</form>
