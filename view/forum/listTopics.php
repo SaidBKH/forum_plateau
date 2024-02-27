@@ -27,10 +27,8 @@
     <label for="text">Premier message :</label><br>
     <textarea id="text" name="text" rows="4" cols="50" required></textarea><br>
 
-    <input type="hidden" id= category_id name="category_id" value="<?= $categoryId ?>">
+    <input type="hidden" id= category_id name="category_id" value="<?= $category->getId()?>">
     
-    <input type="hidden" id="post_id" name="post_id" value="<?= $postId ?>">
-
 
     <button type="submit">Créer le topic</button>
 </form>

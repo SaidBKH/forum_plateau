@@ -4,7 +4,6 @@
 
 <h1>Liste des catégories</h1>
 
-<a href="index.php?ctrl=forum&action=addCategoryForm"> add a category : </a>
 
 <?php
 foreach($categories as $category ){ ?>
