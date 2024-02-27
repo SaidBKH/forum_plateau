@@ -29,6 +29,5 @@
 
     <input type="hidden" id= category_id name="category_id" value="<?= $category->getId()?>">
     
-
     <button type="submit">Créer le topic</button>
 </form>
