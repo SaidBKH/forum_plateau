@@ -29,7 +29,6 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
   
-    
     public function addPost() {
 
         $postManager = new PostManager();   
@@ -253,6 +252,17 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 
+    public function lockTopic($id) {
+        $topicManager = new TopicManager();
+        $topicManager->lockTopic($id);
+        $this->redirectTo('forum', 'listTopics');
+    }
+
+    public function unlockTopic($topicId) {
+        $topicManager = new TopicManager();
+        $topicManager->unlockTopic($topicId);
+        $this->redirectTo('forum', 'listTopics');
+    }
 
 }
 
