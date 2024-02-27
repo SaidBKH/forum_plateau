@@ -38,5 +38,7 @@ class TopicManager extends Manager{
         header("Location: index.php?ctrl=forum&action=index");
 exit();
     }
+  
+
     
 }

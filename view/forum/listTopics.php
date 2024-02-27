@@ -1,20 +1,28 @@
 <?php
-    $category = $result["data"]['category']; 
-    $topics = $result["data"]['topics'];
-
-
+$category = $result["data"]['category']; 
+$topics = $result["data"]['topics'];
 ?>
 
-<h1>Liste des topics</h1>
-
-
+<h1>Liste des topics <?= $category->getName() ?></h1>
 
 <ul>
     <?php foreach ($topics as $topic): ?>
         <li>
-        <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"> <?= $topic->getTitle() ?> par <?= $topic->getUser() ?>
-            <a href="index.php?ctrl=forum&action=editTopic&id=<?= $topic->getId() ?>">Modifier</a>
-            <a href="index.php?ctrl=forum&action=confirmDeleteTopic&id=<?= $topic->getId() ?>">Supprimer</a>
+            <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
+                <?= $topic->getTitle() ?> par <?= $topic->getUser() ?>
+                (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>)
+            </a>
+           
+            <?php if($topic->getUser()->getId() === App\Session::getUser()->getId()): ?>
+                <a href="index.php?ctrl=forum&action=editTopic&id=<?= $topic->getId() ?>">Modifier</a>
+                <a href="index.php?ctrl=forum&action=confirmDeleteTopic&id=<?= $topic->getId() ?>">Supprimer</a>
+                
+                <?php if(!$topic->getClosed()): ?>
+                    <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId() ?>">Verrouiller le sujet</a>
+                <?php else: ?>
+                    <span>Ce sujet est verrouillé</span>
+                <?php endif; ?>
+            <?php endif; ?>
         </li>
     <?php endforeach; ?>
 </ul>

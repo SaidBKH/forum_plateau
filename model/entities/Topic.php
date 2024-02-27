@@ -106,7 +106,7 @@ public function getCreationDate(){
  * @return  self
  */ 
 public function setCreationDate($creationDate){
-    $this->creationDate = $creationDate;
+    $this->creationDate =new \DateTime($creationDate);
     return $this;
 }
 

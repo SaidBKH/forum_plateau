@@ -12,8 +12,13 @@
     <?php foreach ($posts as $post): ?>
         <li>
             <?= $post->getText() ?> par <?= $post->getUser() ?>
+                    (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>)
+            <?php if($post->getUser()->getId() === App\Session::getUser()->getId()): 
+                            // autorise la modification et la suppresion uniquement a l'utilsateur qui à crée le post
+                ?>
             <a href="index.php?ctrl=forum&action=editPost&id=<?= $post->getId() ?>">Modifier</a>
             <a href="index.php?ctrl=forum&action=confirmDeletePost&id=<?= $post->getId() ?>">Supprimer</a>
+            <?php endif; ?>
         </li>
     <?php endforeach; ?>
 </ul>
