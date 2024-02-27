@@ -2,7 +2,7 @@
 <?php
 // Récupérer les données du contrôleur
     $topic = $result["data"]['topic']; 
-    $posts = $result["data"]['posts']; 
+    $post = $result["data"]['post']; 
 ?>
 
 <h1><?= $topic->getTitle() ?></h1>

@@ -57,10 +57,12 @@ class ForumController extends AbstractController implements ControllerInterface{
 
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
             $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS);
-            $categoryId = filter_input(INPUT_POST, "category_id", FILTER_SANITIZE_NUMBER_INT);
             $topicId = filter_input(INPUT_POST, "topic_id", FILTER_SANITIZE_NUMBER_INT);
-            $postId = filter_input(INPUT_POST, "post_id", FILTER_SANITIZE_NUMBER_INT);
+           $categoryId = filter_input(INPUT_POST, "category_id", FILTER_SANITIZE_NUMBER_INT);
+           $postId = filter_input(INPUT_POST, "post_id", FILTER_SANITIZE_NUMBER_INT);
 
+           
+            //var_dump($topicId); die; 
 
 
            $topicId = $topicManager->add([
@@ -70,7 +72,10 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]);
 
              $PostManager = new PostManager();   
-            
+             //var_dump($topicId); die; 
+            // var_dump($categoryId);die;
+
+
            $postId = $PostManager->add([
                 "text"=>$text,
                 "topic_id" => $topicId,

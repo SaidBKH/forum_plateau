@@ -1,6 +1,8 @@
 <?php
     $category = $result["data"]['category']; 
-    $topics = $result["data"]['topics']; 
+    $topics = $result["data"]['topics'];
+
+
 ?>
 
 <h1>Liste des topics</h1>
@@ -25,7 +27,10 @@
     <label for="text">Premier message :</label><br>
     <textarea id="text" name="text" rows="4" cols="50" required></textarea><br>
 
-    <input type="hidden" name="category_id" value="<?= $categoryId ?>">
+    <input type="hidden" id= category_id name="category_id" value="<?= $categoryId ?>">
+    
+    <input type="hidden" id="post_id" name="post_id" value="<?= $postId ?>">
+
 
     <button type="submit">Créer le topic</button>
 </form>
