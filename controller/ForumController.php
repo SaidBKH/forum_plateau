@@ -176,8 +176,6 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 
-
-
     public function confirmDeleteTopic($id) {
         $topicManager = new TopicManager();
         $topic = $topicManager->findOneById($id);
@@ -197,7 +195,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         if (isset($_POST['confirm_delete'])) {
             $topicManager->deleteTopicById($id);
-            header("Location: index.php?ctrl=forum&action=listPostsByTopic&Id=" . $topic->getTitle()->getId());
+            header("Location: index.php?ctrl=forum&action=listTopicsByCategory&Id=" . $topic->getId());
             exit();
         }
     }
@@ -253,15 +251,17 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
     public function lockTopic($id) {
+        //var_dump($id);die;
         $topicManager = new TopicManager();
         $topicManager->lockTopic($id);
-        $this->redirectTo('forum', 'listTopics');
+        $this->redirectTo("forum", "listTopics");
     }
 
     public function unlockTopic($id) {
         $topicManager = new TopicManager();
         $topicManager->unlockTopic($id);
-        $this->redirectTo('forum', 'listTopics');
+        $this->redirectTo("forum", "listTopics");
+
     }
 
 }

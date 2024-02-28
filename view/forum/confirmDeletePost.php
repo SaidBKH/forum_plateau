@@ -1,4 +1,4 @@
-<?php $post = $result["data"]['post']; 
+<?php $post = $result["data"]['post'];
 ?>
 
 <h1>Supprimer le post</h1>

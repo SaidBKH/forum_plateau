@@ -33,20 +33,30 @@ class TopicManager extends Manager{
     }
 
     public function deleteTopicById($id) {
-        $sql = "DELETE FROM {$this->tableName} WHERE id_post = :id";
+        $sql = "DELETE FROM {$this->tableName} WHERE id_topic = :id";
         DAO::delete($sql, ['id' => $id]);
         header("Location: index.php?ctrl=forum&action=index");
 exit();
     }
   
+    public function deleteById($id) {
+        $sql = "DELETE FROM {$this->tableName} WHERE id_post = :id";
+        DAO::delete($sql, ['id' => $id]);
+        header("Location: index.php?ctrl=forum&action=index");
+exit();
+    }
+
+
     public function lockTopic($id) {
-        $sql = "UPDATE {$this->tableName} SET closed = 1 WHERE id = :id";
-        DAO::update($sql, [ 'id' => $id]);
+        $sql = "UPDATE {$this->tableName} SET closed = 1 WHERE id_topic = :id";
+       var_dump($sql); 
+        DAO::update($sql, ['id' => $id]);
+
     }
     
     public function unlockTopic($id) {
-        $sql = "UPDATE {$this->tableName} SET closed = 0 WHERE id = :id";
-        DAO::update($sql, [ 'id' => $id]);
+        $sql = "UPDATE {$this->tableName} SET closed = 0 WHERE id_topic = :id";
+        DAO::update($sql, ['id' => $id]);
     }
     
 }

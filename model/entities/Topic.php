@@ -21,9 +21,6 @@ final class Topic extends Entity{
         $this->hydrate($data);        
     }
 
-    /**
-     * Get the value of id
-     */ 
     public function getId(){
         return $this->id;
     }
