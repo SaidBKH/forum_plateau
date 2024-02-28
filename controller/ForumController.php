@@ -258,9 +258,9 @@ class ForumController extends AbstractController implements ControllerInterface{
         $this->redirectTo('forum', 'listTopics');
     }
 
-    public function unlockTopic($topicId) {
+    public function unlockTopic($id) {
         $topicManager = new TopicManager();
-        $topicManager->unlockTopic($topicId);
+        $topicManager->unlockTopic($id);
         $this->redirectTo('forum', 'listTopics');
     }
 

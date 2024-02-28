@@ -10,17 +10,21 @@ $topics = $result["data"]['topics'];
         <li>
             <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
                 <?= $topic->getTitle() ?> par <?= $topic->getUser() ?>
-                (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>)
+                (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>) <!-- dateTime-->
+
             </a>
-           
             <?php if($topic->getUser()->getId() === App\Session::getUser()->getId()): ?>
+                <!-- Vérifie si l'utilisateur actuel est l'auteur du topic -->
+                
                 <a href="index.php?ctrl=forum&action=editTopic&id=<?= $topic->getId() ?>">Modifier</a>
                 <a href="index.php?ctrl=forum&action=confirmDeleteTopic&id=<?= $topic->getId() ?>">Supprimer</a>
                 
-                <?php if(!$topic->getClosed()): ?>
-                    <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId() ?>">Verrouiller le sujet</a>
+                <?php if($topic->getClosed()): ?>
+                    <!-- Si le topic est verrouillé, affiche le lien pour le déverrouiller -->
+                    <a href="index.php?ctrl=forum&action=unlockTopic&id=<?= $topic->getId() ?>">Déverrouiller</a>
                 <?php else: ?>
-                    <span>Ce sujet est verrouillé</span>
+                    <!-- Si le topic est déverrouillé, affiche le lien pour le verrouiller -->
+                    <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId() ?>">Verrouiller</a>
                 <?php endif; ?>
             <?php endif; ?>
         </li>
