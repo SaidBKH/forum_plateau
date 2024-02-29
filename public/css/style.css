@@ -7,3 +7,36 @@
 h1 {
     color: rgb(0, 122, 156);
 }
+
+
+
+.header { background-color: blue;
+   
+}
+
+
+header {
+    background-color: #006400; 
+    padding: 10px; 
+    color: white; 
+}
+
+nav {
+    background-color: #006400; 
+    color: white; 
+    padding: 5px 0; 
+}
+
+#nav-left,
+#nav-right {
+    display: inline-block; 
+}
+
+#nav-left a,
+#nav-right a {
+    color: white; 
+    margin-right: 10px; 
+    text-decoration: none; 
+}
+
+

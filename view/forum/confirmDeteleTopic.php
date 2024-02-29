@@ -1,5 +1,5 @@
 <?php $topic = $result["data"]['topic']; 
-var_dump($topic);die;
+//var_dump($topic);die;
 ?>
 
 <h1>Supprimer le topic</h1>
