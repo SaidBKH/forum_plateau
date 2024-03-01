@@ -22,11 +22,9 @@
                                 <a href="index.php?ctrl=forum_plateau">ACCUEIL
                                 </a>
                                 <a href="index.php?ctrl=forum&action=listCategory">CATEGORIE</a>
-
-                                <?php if(App\Session::isAdmin()): ?>
-                                    
-                                    <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                                <?php endif; ?>
+                            <?php if(App\Session::isAdmin()): ?>
+                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                            <?php endif; ?>
                             </div>
 
                             <div id="nav-right">
@@ -41,7 +39,6 @@
                             </div>
                         </nav>
                 </header>
-
                 
                 <main id="forum">
                     <?= $page ?>

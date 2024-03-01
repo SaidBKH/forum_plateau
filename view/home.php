@@ -11,24 +11,45 @@
         <title>FORUM</title>
     </head>
     <body>
-        <header>
-        </header>
-            <div id="accueil">
+        <!-- <header>
+                <nav>
+                    <div id="nav-left">
+                        <a href="index.php?ctrl=forum_plateau">ACCUEIL
+                        </a>
+                        <a href="index.php?ctrl=forum&action=listCategory">CATEGORIE</a>
+                            <?php if(App\Session::isAdmin()): ?>
+                            <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                    <?php endif; ?>
+                            </div>
 
+                            <div id="nav-right">
+                                <?php if(App\Session::getUser()): ?>
+                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getNickName() ?></a>
+                                    <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                                <?php else: ?>
+                                    <a href="index.php?ctrl=security&action=loginForm">SE CONNECTER </a>
+                                    <a href="index.php?ctrl=security&action=registerForm">S'INSCRIRE</a>
+                                <?php endif; ?>
+                                 <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a> -->
+                            </div>
+                        </nav>
+                </header> 
+
+            <div id="accueil">
             <h1>BIENVENUE SUR LE FORUM</h1>
             <br>
             <p>Vous devez vous inscrire ou vous connecter au forum pour accéder
             au contenu du forum et à tout nos services.</p>
             </div>
-            <br>
+
             <div id="loginRegister">
                 <div id="loginForm">
                     <h2> login</h2>
                     <form action="index.php?ctrl=security&action=login" method="post">
-                        <label for="email">email :</label><br>
-                        <input type="email" id="email" name="email" required><br>
-                        <label for="password">Mot de passe :</label><br>    
-                        <input type="password" id="password" name="password" required><br>
+                        <label for="email"></label><br>
+                        <input placeholder="mail" type="email" id="email" name="email" required style="text-align: center;"><br>
+                        <label for="password"></label><br>    
+                        <input placeholder=" mot de passe" type="password" id="password" name="password" required style="text-align: center;"><br>
                         <button type="submit">SE CONNECTER</button>
                     </form>
                 </div>
@@ -37,7 +58,9 @@
                    <button name="register"> <a href="index.php?ctrl=security&action=registerForm">JE M'INSCRIS </button>
                 </div>
             </div>
-        <br>
+            
+
+        
  </body>
 
 
