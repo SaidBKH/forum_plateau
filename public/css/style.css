@@ -2,34 +2,48 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 h1 {
-    color: rgb(0, 122, 156);
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+h2 {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
 }
 
-
-
-.header { background-color: blue;
-   
+p{
+     color: white;
 }
 
 
 header {
-    background-color: #006400; 
+    display: flex;
+    justify-content: center;
+    background-color: #1a8b85; 
     padding: 10px; 
-    color: white; 
+
 }
 
 nav {
-    background-color: #006400; 
-    color: white; 
+
+    height: 100%;
+    width: 100%;
+    color: rgb(255, 255, 255); 
     padding: 5px 0; 
 }
 
-#nav-left,
-#nav-right {
-    display: inline-block; 
+
+#nav-right{ display: flex;
+    justify-content: flex-end;
+
+}
+#nav-left{ padding-left: 20px;
+ 
+ 
+    
 }
 
 #nav-left a,
@@ -39,4 +53,61 @@ nav {
     text-decoration: none; 
 }
 
+#loginForm { 
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+   width: 50%;
+    background-color: #1d9e97;
+    padding-right: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
 
+#forum{ 
+    background-color: #23bbae; 
+}
+
+#accueil{
+    width: 100%;
+padding-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#loginRegister{
+    text-decoration: none;
+    flex-direction:column;
+    align-items: center;
+    display: flex;
+   justify-content: center;
+   
+}
+
+input{margin-bottom: 10px;}
+
+
+button {
+    text-decoration: none;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    background-color: #1d9e97;
+}
+
+.registerButton a{
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+   
+}
+
+.registerButton {
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+}

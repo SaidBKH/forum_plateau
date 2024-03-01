@@ -1,8 +1,48 @@
-<h1>BIENVENUE SUR LE FORUM</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="<?= $meta_description ?>">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
+        <title>FORUM</title>
+    </head>
+    <body>
+        <header>
+        </header>
+            <div id="accueil">
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ut nemo quia voluptas numquam, itaque ipsa soluta ratione eum temporibus aliquid, facere rerum in laborum debitis labore aliquam ullam cumque.</p>
+            <h1>BIENVENUE SUR LE FORUM</h1>
+            <br>
+            <p>Vous devez vous inscrire ou vous connecter au forum pour accéder
+            au contenu du forum et à tout nos services.</p>
+            </div>
+            <br>
+            <div id="loginRegister">
+                <div id="loginForm">
+                    <h2> login</h2>
+                    <form action="index.php?ctrl=security&action=login" method="post">
+                        <label for="email">email :</label><br>
+                        <input type="email" id="email" name="email" required><br>
+                        <label for="password">Mot de passe :</label><br>    
+                        <input type="password" id="password" name="password" required><br>
+                        <button type="submit">SE CONNECTER</button>
+                    </form>
+                </div>
+                <br>
+                <div class="registerButton">
+                   <button name="register"> <a href="index.php?ctrl=security&action=registerForm">JE M'INSCRIS </button>
+                </div>
+            </div>
+        <br>
+ </body>
 
-<p>
+
+<!-- <p>
+
     <a href="index.php?ctrl=security&action=loginForm">Se connecter</a>
     <a href="index.php?ctrl=security&action=registerForm">S'inscrire</a>
-</p>
+</p> -->
