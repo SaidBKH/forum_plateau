@@ -250,3 +250,26 @@ background-color: rgb(45, 161, 161);
     display: flex;
     justify-content: center;
 }
+
+#categories {
+    background-color: #8FBC8F; 
+    padding: 20px;
+    margin-top: 20px; 
+}
+
+#categories h2 {
+    color: white; 
+    font-size: 24px; 
+}
+
+#categories ul {
+    list-style-type: none; 
+    padding: 0;
+}
+
+#categories li {
+    margin-bottom: 10px; 
+}
+
+#categories select {
+    margin-left: 10px; }

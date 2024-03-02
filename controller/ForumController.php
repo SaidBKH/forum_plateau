@@ -21,7 +21,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         // le controller communique avec la vue "listCategories" (view) pour lui envoyer la liste des catégories (data)
         return [
-            "view" => VIEW_DIR."forum/listCategories.php",
+            "view" => VIEW_DIR."home.php",
             "meta_description" => "Liste des catégories du forum",
             "data" => [
                 "categories" => $categories
