@@ -19,6 +19,4 @@ class CategoryManager extends Manager{
     }
 
 
-    
-
 }

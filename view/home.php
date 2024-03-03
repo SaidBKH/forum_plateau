@@ -59,22 +59,10 @@
                 </div>
             </div>
             
- <div id="categories">
-    <h2>Liste des catégories</h2>
-    <ul>
-        <?php foreach ($categories as $category): ?>
-            <li>
-                <?= $category->getName() ?>
-                <select name="topics">
-                    <?php foreach ($category->getTopics() as $topic): ?>
-                        <option value="<?= $topic->getId() ?>"><?= $topic->getTitle() ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</div>
 
+            <?php foreach ($categories as $category): ?>
+    <p><?= $category->getName() ?></p>
+<?php endforeach; ?>
 
         
  </body>
