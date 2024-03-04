@@ -59,4 +59,13 @@ exit();
         DAO::update($sql, ['id' => $id]);
     }
     
+
+    public function findLatestTopics() {
+        $sql = "SELECT * FROM topic ORDER BY creationDate DESC LIMIT 5";
+        return  $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+
 }

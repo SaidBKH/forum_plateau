@@ -1,42 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="<?= $meta_description ?>">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
-        <title>FORUM</title>
-    </head>
-    <body>
-        <!-- <header>
-                <nav>
-                    <div id="nav-left">
-                        <a href="index.php?ctrl=forum_plateau">ACCUEIL
-                        </a>
-                        <a href="index.php?ctrl=forum&action=listCategory">CATEGORIE</a>
-                            <?php if(App\Session::isAdmin()): ?>
-                            <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                    <?php endif; ?>
-                            </div>
+<?php
 
-                            <div id="nav-right">
-                                <?php if(App\Session::getUser()): ?>
-                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getNickName() ?></a>
-                                    <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                                <?php else: ?>
-                                    <a href="index.php?ctrl=security&action=loginForm">SE CONNECTER </a>
-                                    <a href="index.php?ctrl=security&action=registerForm">S'INSCRIRE</a>
-                                <?php endif; ?>
-                                 <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a> -->
-                            </div>
-                        </nav>
-                </header> 
+use App\Session;
+use App\AbstractController;
+use App\ControllerInterface;
+use Model\Managers\CategoryManager;
+use Model\Managers\PostManager;
+use Model\Managers\TopicManager;
+use Model\Managers\UserManager;
+use controller\ForumController;
+use model\entities;
 
-            <div id="accueil">
-            <h1>BIENVENUE SUR LE FORUM</h1>
+$categories = $result["data"]['categories'];
+$latestTopics = $result["data"]['latestTopics'];
+
+?>
+<div id ="accueil">
+
+<?php if(Session::isAdmin()) { ?>
+
+<h1>BIENVENUE ADMIN-<?= $_SESSION["user"]->getNickName() ?></h1>
+
+<?php } else if(Session::getUser()) { ?>
+
+<h1>BIENVENUE SUR LE FORUM <?= $_SESSION["user"]->getNickName() ?></h1>
+
+<?php } else { ?>
+                <h1>BIENVENUE SUR LE FORUM</h1>
             <br>
             <p>Vous devez vous inscrire ou vous connecter au forum pour accéder
             au contenu du forum et à tout nos services.</p>
@@ -57,19 +46,32 @@
                 <div class="registerButton">
                    <button name="register"> <a href="index.php?ctrl=security&action=registerForm">JE M'INSCRIS </button>
                 </div>
+                <?php } ?>
             </div>
-            
-
-            <?php foreach ($categories as $category): ?>
-    <p><?= $category->getName() ?></p>
-<?php endforeach; ?>
-
-        
- </body>
 
 
-<!-- <p>
+            <div class="listCategory">
+                <h1>Liste des catégories</h1>
+                <br>
+                <?php foreach($categories as $category ){ ?>
+                <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getName() ?></a></p>
+                <?php }?>
+            </div>
 
-    <a href="index.php?ctrl=security&action=loginForm">Se connecter</a>
-    <a href="index.php?ctrl=security&action=registerForm">S'inscrire</a>
-</p> -->
+            <div class="lastTopic">
+
+            <div class="lastTopicTitle">
+                <h4>Last Topic</h4>
+                </div>
+
+                <ul>
+                     <?php foreach ($latestTopics as $topic): ?>
+                        <li>category: <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $topic->getCategory() ?></a><br>
+                        <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"> <?= $topic->getTitle() ?></a>
+                         par : <?= $topic->getUser() ?>
+                        publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i')?></li>
+                       
+                    <?php endforeach; ?>
+                </ul>
+             </div>
+       

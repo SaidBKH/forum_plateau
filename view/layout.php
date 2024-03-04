@@ -19,17 +19,16 @@
                 <header>
                         <nav>
                             <div id="nav-left">
-                                <a href="index.php?ctrl=forum_plateau">ACCUEIL
-                                </a>
-                                <a href="index.php?ctrl=forum&action=listCategory">CATEGORIE</a>
-                            <?php if(App\Session::isAdmin()): ?>
-                                <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                            <?php endif; ?>
+                                <a href="index.php">ACCUEIL</a>
+                               <!-- <a href="index.php?ctrl=forum&action=listCategory">CATEGORIE</a> -->
                             </div>
 
                             <div id="nav-right">
                                 <?php if(App\Session::getUser()): ?>
-                                    <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()->getNickName() ?></a>
+                                    <a href="index.php?ctrl=security&action=profile">
+                                    <span class="fas fa-user"></span>
+                                    &nbsp;<?= App\Session::getUser()->getNickName() ?>
+                                    </a>
                                     <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php else: ?>
                                     <a href="index.php?ctrl=security&action=loginForm">SE CONNECTER </a>
@@ -38,6 +37,7 @@
                                 <!-- <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a> -->
                             </div>
                         </nav>
+                        
                 </header>
                 
                 <main id="forum">
