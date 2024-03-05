@@ -16,6 +16,9 @@ final class Topic extends Entity{
     private $creationDate;
     private $closed;
 
+           
+    private $nbTopics; 
+    private $reCount;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -123,6 +126,41 @@ public function setClosed($closed){
     $this->closed = $closed;
     return $this;
 }
+
+public function getNbTopics()
+{
+        return $this->nbTopics;
+}
+
+/**
+ * Set the value of nbMessages
+ *
+ * @return  self
+ */ 
+public function setNbTopics($nbTopics)
+{
+        $this->nbTopics = $nbTopics;
+
+        return $this;
+}
+
+
+
+public function getReCount()
+{
+    return $this->reCount;
+}
+
+/**
+ * @return  self
+ */ 
+public function setReCount($reCount)
+{
+    $this->reCount = $reCount;
+
+    return $this;
+}
+
 
 
 }

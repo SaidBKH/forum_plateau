@@ -13,6 +13,10 @@ use model\entities;
 $categories = $result["data"]['categories'];
 $latestTopics = $result["data"]['latestTopics'];
 
+$statUsers = $result["data"]["statUsers"];    
+$statPosts = $result["data"]["statPosts"];    
+$statTopics = $result["data"]["statTopics"];
+
 ?>
 <div id ="accueil">
 
@@ -50,28 +54,75 @@ $latestTopics = $result["data"]['latestTopics'];
             </div>
 
 
+        <div class = "homeList">
+
             <div class="listCategory">
-                <h1>Liste des catégories</h1>
+                <h1>LISTE DES CATEGORIES</h1>
                 <br>
+            <ul>
                 <?php foreach($categories as $category ){ ?>
-                <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getName() ?></a></p>
+                <li><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><span style="text-transform:uppercase"><?= $category->getName() ?></span></a></li>
                 <?php }?>
+            </ul>
             </div>
 
             <div class="lastTopic">
-
-            <div class="lastTopicTitle">
-                <h4>Last Topic</h4>
-                </div>
+                    <h4>Last Topic</h4>
+                <br>
 
                 <ul>
                      <?php foreach ($latestTopics as $topic): ?>
-                        <li>category: <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $topic->getCategory() ?></a><br>
+                        <li>category :<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId()?>"><?= $topic->getCategory() ?></a><br>
                         <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"> <?= $topic->getTitle() ?></a>
                          par : <?= $topic->getUser() ?>
-                        publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i')?></li>
-                       
+                        publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i')?></li>  
                     <?php endforeach; ?>
                 </ul>
-             </div>
+            </div>
+        </div>
+
+
+
+            <div class="statistics">
+                <table>
+                    <thead>
+                        <tr>
+                            <th >Statistics</th>
+                        </tr>
+
+                    </thead>
+                        <tr>
+                            <td>Membres</td>
+
+                            <td>
+                                <?php foreach($statUsers as $stat) { 
+                                    echo $stat->getReCount()." membres";
+                                    
+                                    
+                                } ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Topics</td>
+
+                            <td>
+                                <?php foreach($statTopics as $stat) { 
+                                    echo $stat->getReCount() ." discussions";
+                                } ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Posts</td>
+                            
+                            <td>
+                                <?php foreach($statPosts as $stat) {
+                                    echo $stat->getReCount()." messages";
+                                } ?>
+                            </td>
+                        </tr>
+                </table>            
+            </div>
+             
        

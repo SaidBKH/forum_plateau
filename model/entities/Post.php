@@ -11,6 +11,11 @@ final class Post extends Entity{
     private $topic;
     private $creationDate;
 
+    private $nbPosts;
+    private $reCount;
+
+
+
     public function __construct($data){         
         $this->hydrate($data);        
     }
@@ -85,4 +90,38 @@ final class Post extends Entity{
         $this->creationDate =new \DateTime($creationDate);
         return $this;
     }
+
+    public function geNbPosts()
+    {
+            return $this->nbPosts;
+    }
+
+    /**
+     * Set the value of the number of topics
+     *
+     * @return  self
+     */ 
+    public function setNbPosts($nbPosts)
+    {
+            $this->nbPosts = $nbPosts;
+
+            return $this;
+    }
+
+
+    public function getReCount()
+{
+    return $this->reCount;
 }
+
+/**
+ * @return  self
+ */ 
+public function setReCount($reCount)
+{
+    $this->reCount = $reCount;
+
+    return $this;
+}
+    }
+

@@ -15,6 +15,10 @@ final class User extends Entity{
     private $role;
     private $password;
 
+    private $nbUser;
+    private $reCount;
+
+
     public function __construct($data){         
         $this->hydrate($data);        
     }
@@ -106,4 +110,38 @@ final class User extends Entity{
     public function hasRole($role) {
         return $this->role === $role;
     }
+
+    
+public function getNbUser()
+{
+    return $this->nbUser;
+}
+
+/**
+ * Set the value of nbUser
+ *
+ * @return  self
+ */ 
+public function setNbUser($nbUser)
+{
+    $this->nbUser = $nbUser;
+
+    return $this;
+}
+
+
+public function getReCount()
+{
+    return $this->reCount;
+}
+
+/**
+ * @return  self
+ */ 
+public function setReCount($reCount)
+{
+    $this->reCount = $reCount;
+
+    return $this;
+}
 }

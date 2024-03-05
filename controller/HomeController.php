@@ -6,6 +6,8 @@ use App\ControllerInterface;
 use Model\Managers\UserManager;
 use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
+use Model\Managers\PostManager;
+
 
 class HomeController extends AbstractController implements ControllerInterface {
 
@@ -15,6 +17,10 @@ class HomeController extends AbstractController implements ControllerInterface {
         $managerTopic = new TopicManager();
         $categories = $managerCategory->findAll();;
         $latestTopics = $managerTopic->findLatestTopics();
+        $topicManager = new TopicManager();
+        $userManager = new UserManager();
+        $postManager = new PostManager();
+        
 
         return [
             "view" => VIEW_DIR."home.php",
@@ -22,6 +28,9 @@ class HomeController extends AbstractController implements ControllerInterface {
             "data" => [ 
                 "categories" => $categories, 
                 "latestTopics" => $latestTopics,
+                "statUsers" => $userManager->countElem(),
+                    "statTopics" => $topicManager->countElem(),
+                    "statPosts" => $postManager->countElem()
             ]
         ];
     }     

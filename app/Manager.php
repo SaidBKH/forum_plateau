@@ -106,4 +106,18 @@ abstract class Manager{
         return false;
     }
 
+
+    public function countElem() {
+        $sql = 
+        "SELECT
+            COUNT(a.id_".$this->tableName.") AS ReCount
+        FROM 
+            ".$this->tableName." a
+        ";
+
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
 }
