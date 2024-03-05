@@ -235,62 +235,121 @@ background-color: rgb(45, 161, 161);
 .homeList{
     background-color: #1a8b85;
     display: flex;
-    flex-direction: row;
-    height: 100%
-    ;
+ width: 100%;
 }
 
 .listCategory {
+    border-radius: 0px 20px 20px 0px;
+    background-color: #125653;
+    margin-right: 20px;
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 30%;
+    
+    width: 50%;
+
 }
 .listCategory ul li{
+    
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: solid 1px black;
-    width: 100%;
     background: #1fb0a8;
 }
+.listCategory a{
+    color: white;
+    
+}
 .listCategory ul {
-    margin-left: 20px;
-    width: 100%;
+    width: 80%;
     text-decoration: none
 
 }
 .homeList a{
     text-decoration: none;
-    color: white;
 }
 .listCategory ul a:hover{ 
   color: red;
 }
 
 .lastTopic{
+    border-radius: 20px 0px 0px 20px;
+    background-color: #125653;
+  align-items: center;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-   color: white;
-   justify-content: center;
-   align-items: center;
+    width: 50%;
+ 
 }
+
+.lastTopic a{
+    color: rgb(85, 85, 85)
+
+ 
+}
+
+
 .lastTopic ul li{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+    border-radius: 20px 0px 0px 20px;
+    background: #1fb0a8;
+}
+.lastTopic ul {
+    padding-bottom: 20px;
+    height: 100%;
+    width: 80%;
+}
+
+.lastTopic ul li p{
+color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border: solid 1px black;
     width: 100%;
     background: #1fb0a8;
 }
 
-.lastTopic ul {
-    padding-left: 20px;
+.statistics{ display: flex;
+    background: rgb(28, 88, 92);
+    flex-direction: column;
+    width: 100%;  
+    ;  
 
-    
+
+}
+.statistics tbody{
+    align-items: center;
+flex-direction:column;
+    display: flex;
+    justify-content: center;
+    width: 100%;  
+ 
+
+
+}
+
+
+.statistics h1{
+    padding-top: 20px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.statistics tr {
+    padding-left: 10px;
+    background-color: #ffffff;
+    flex-direction: column;
+    display: flex;
+    width: 30%;
+    border: solid 1px black;
+    color: rgb(0, 0, 0);
+    justify-content: center; 
+
 }

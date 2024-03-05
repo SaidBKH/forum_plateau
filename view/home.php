@@ -67,30 +67,28 @@ $statTopics = $result["data"]["statTopics"];
             </div>
 
             <div class="lastTopic">
-                    <h4>Last Topic</h4>
                 <br>
-
-                <ul>
-                     <?php foreach ($latestTopics as $topic): ?>
-                        <li>category :<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId()?>"><?= $topic->getCategory() ?></a><br>
-                        <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"> <?= $topic->getTitle() ?></a>
-                         par : <?= $topic->getUser() ?>
-                        publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i')?></li>  
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+            <h1>LAST TOPIC</h1>
+            <br>
+            <ul>
+             <li>
+                <?php foreach ($latestTopics as $topic): ?>
+                    <p>category : <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>  "><?= $topic->getCategory()?></a><br>
+                    <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>  
+                     par : <?= $topic->getUser() ?>
+                    publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i') ?></p>     
+                <?php endforeach; ?>
+                </li>
+            </ul>
+            
         </div>
-
-
+         </div>
 
             <div class="statistics">
-                <table>
-                    <thead>
-                        <tr>
-                            <th >Statistics</th>
-                        </tr>
 
-                    </thead>
+            <h1>STATISTICS</h1>
+                <table>
+                
                         <tr>
                             <td>Membres</td>
 
