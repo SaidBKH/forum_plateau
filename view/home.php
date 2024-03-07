@@ -75,7 +75,7 @@ $statTopics = $result["data"]["statTopics"];
             <ul>
             <?php foreach ($latestTopics as $topic): ?>
                  <li>
-                        <p>category :<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>" ><?= $topic->getCategory()?></a><br>
+                        <p>category :<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>" ><?= $topic->getCategory()?></a><br>
                         <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>  
                          par : <?= $topic->getUser() ?>
                         publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i') ?></p>     

@@ -56,7 +56,6 @@ class SecurityController extends AbstractController{
                         // PASSWORD_DEFAULT - Utilisation de l'algorithme bcrypt (par défaut depuis PHP 5.5.0).
                             "role" => "Utilisateur"
                     ]);
-
                     $this->redirectTo("home", "index");
                 }
             } 
@@ -92,12 +91,11 @@ class SecurityController extends AbstractController{
                         $this->redirectTo("home", "index");
                     } else {
                         echo "Mot de passe incorrect";
-
                         $this->redirectTo("home", "index");
                     }
                 } else {
                     echo "L'email n'existe pas";
-                                            $this->redirectTo("home", "index");
+                        $this->redirectTo("home", "index");
 
                 }
             } 
