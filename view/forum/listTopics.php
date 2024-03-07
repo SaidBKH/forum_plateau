@@ -3,6 +3,8 @@ $category = $result["data"]['category'];
 $topics = $result["data"]['topics'];
 ?>
 
+<?php if( App\Session::getUser()){ ?>
+
 <div class = "listTopicBycategory">
     <div class = "listTopicsPosts">
         <h1>Liste des topics <?= $category->getName() ?></h1>
@@ -13,11 +15,12 @@ $topics = $result["data"]['topics'];
                     <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
                         <?= $topic->getTitle() ?> par <?= $topic->getUser() ?>
                         (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>) <!-- dateTime-->
-
                     </a>
+                                        
                     <?php if($topic->getUser()->getId() === App\Session::getUser()->getId()): ?>
+                        <!-- si l'auteur du topic est le meme (===) que celui connecter  -->
+
                         <!-- Vérifie si l'utilisateur actuel est l'auteur du topic -->
-                        
                         <a href="index.php?ctrl=forum&action=editTopic&id=<?= $topic->getId() ?>">Modifier</a>
                         <a href="index.php?ctrl=forum&action=confirmDeleteTopic&id=<?= $topic->getId() ?>">Supprimer</a>
                         
@@ -27,7 +30,7 @@ $topics = $result["data"]['topics'];
                         <?php else: ?>
                             <!-- Si le topic est déverrouillé, affiche le lien pour le verrouiller -->
                             <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId() ?>">Verrouiller</a>
-                        <?php endif; ?>
+                        <?php endif; ?>                     
                     <?php endif; ?>
                 </li>
             <?php endforeach; ?>
@@ -49,3 +52,8 @@ $topics = $result["data"]['topics'];
         </form>
     </div>
  </div>
+ <?php } else {?>
+ <div class = "loginOrRegister">
+ <p>veuillez vous <a href="index.php?ctrl=security&action=registerForm">connecter</a> ou vous <a href="index.php?ctrl=security&action=registerForm">inscrire</a> pour acceder au forum </p>
+ </div>
+ <?php }?>

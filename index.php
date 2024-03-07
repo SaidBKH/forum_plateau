@@ -64,3 +64,24 @@ else{
     /* j'affiche le template principal (layout) */
     include VIEW_DIR."layout.php";
 }
+
+// Les fonctions require et include permettent de charger un fichier php. Cependant, il y a une différence entre les deux:
+// require génère une erreur fatale et arrête l'exécution du script si le fichier n'existe pas.
+//  include ne génère qu'un warning et continue l'exécution du script si le fichier n'existe pas.
+
+
+//e programmation orientée objet :
+// modéliser des entités du monde réel sous forme d'objets informatiques,
+// avec des caractéristiques (champs) et de comportements (méthodes). 
+
+// encapsulation : 
+//restraint l'acces au données 
+//les propriété sont en privé; private 
+//une histoire de securité 
+
+//heritage :
+// L’héritage nous permet de définir de multiples sous-classes à partir d’une classe déjà définie.
+
+//polymorphisme : plusieurs formes. parce que on construit des méthodes ayant le même nom mais des fonctionnalités différentes.
+
+//abstraction : elle ne peut pas être instanciée directement

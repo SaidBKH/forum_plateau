@@ -1,6 +1,6 @@
 <?php
 namespace Controller;
-
+// definition require definition  namespace 
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
@@ -24,7 +24,6 @@ class SecurityController extends AbstractController{
 
         $userManager = new UserManager();
         
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $nickName = filter_input(INPUT_POST, "nickName", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -93,9 +92,13 @@ class SecurityController extends AbstractController{
                         $this->redirectTo("home", "index");
                     } else {
                         echo "Mot de passe incorrect";
+
+                        $this->redirectTo("home", "index");
                     }
                 } else {
                     echo "L'email n'existe pas";
+                                            $this->redirectTo("home", "index");
+
                 }
             } 
         }
@@ -107,9 +110,10 @@ class SecurityController extends AbstractController{
 
     public function logout() {
         $_SESSION[] = session_unset();
-        return ["view" => VIEW_DIR . "security/login.php",
-         "meta_description" => "Formulaire de connexion"
-    ];
+
+        $this->redirectTo("home", "index");
+        
+ 
     
     }
 }

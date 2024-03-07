@@ -239,6 +239,7 @@ background-color: rgb(45, 161, 161);
 }
 
 .listCategory {
+    height: 100%;
     border-radius: 0px 20px 20px 0px;
     background-color: #125653;
     margin-right: 20px;
@@ -289,7 +290,6 @@ background-color: rgb(45, 161, 161);
 
 .lastTopic a{
     color: rgb(85, 85, 85)
-
  
 }
 
@@ -299,6 +299,7 @@ background-color: rgb(45, 161, 161);
     background: #1fb0a8;
 }
 .lastTopic ul {
+    list-style-type: none;
     padding-bottom: 20px;
     height: 100%;
     width: 80%;
@@ -315,7 +316,8 @@ color: black;
     background: #1fb0a8;
 }
 
-.statistics{ display: flex;
+.statistics{
+    display: flex;
     background: rgb(28, 88, 92);
     flex-direction: column;
     width: 100%;  
@@ -325,14 +327,12 @@ color: black;
 }
 .statistics tbody{
     align-items: center;
-flex-direction:column;
+    flex-direction:column;
     display: flex;
     justify-content: center;
     width: 100%;  
- 
 
 }
-
 
 .statistics h1{
     padding-top: 20px;
@@ -352,3 +352,19 @@ flex-direction:column;
     justify-content: center; 
 
 }
+
+.loginOrRegister {
+    height: 100px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #125653;
+}
+
+.loginOrRegister a{
+    text-decoration: none;
+
+    color: red;
+}
+
+#profil { background-color: #125653;}

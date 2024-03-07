@@ -25,7 +25,7 @@
 
                             <div id="nav-right">
                                 <?php if(App\Session::getUser()): ?>
-                                    <a href="index.php?ctrl=security&action=profile">
+                                    <a href="index.php?ctrl=user&action=profile">
                                     <span class="fas fa-user"></span>
                                     &nbsp;<?= App\Session::getUser()->getNickName() ?>
                                     </a>
