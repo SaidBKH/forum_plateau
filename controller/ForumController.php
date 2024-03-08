@@ -248,13 +248,19 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function detailProfil($id){
         $userManager = new UserManager();
+        $postManager = new PostManager();
         $user = $userManager->findOneById($id);
+        $posts = $postManager->findPostsByUser($id);
+
 
         return [
             "view" => VIEW_DIR . "forum/detailProfil.php",
             "meta_description" => "detail du profil",
             "data" => [
                 "user" => $user,
+                "posts" => $posts,
+
+
             ]
         ];
     }

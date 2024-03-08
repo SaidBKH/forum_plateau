@@ -1,7 +1,7 @@
 
 <?php
     $user = $result["data"]['user']; 
-    $post = $result["data"]['posts']; 
+    $posts = $result["data"]['posts']; 
 
     ?>
 
@@ -18,11 +18,9 @@
         <br>
             <ul>
                 <?php foreach($posts as $post ){ ?>
-                    
-                <li><?= $post->getText()?></li>
-                <li><?= $post->getCreationDate()?></li>
-
+                    <li> category :<?= $post->getTopic()->getCategory()?></li>
+                <li> post : <?= $post->getText()?></li>
+                <li> publié le : <?= $post->getCreationDate()->format('d-m-Y H:i')?></li>
                 <?php }?>
             </ul>
     </div>
-
