@@ -6,7 +6,7 @@
 
 <?php
 foreach($users as $user ){ ?>
-    <p><a href="index.php?ctrl=forum&action=listPostsByUser&id=<?= $user->getId() ?>"><?= $user->getNickName() ?></a></p>
+    <p><a href="index.php?ctrl=user&action=profile&id=<?= $user->getId() ?>"><?= $user->getNickName() ?></a></p>
 <?php }
 
 

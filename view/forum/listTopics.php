@@ -13,7 +13,7 @@ $topics = $result["data"]['topics'];
             <?php foreach ($topics as $topic): ?>
                 <li>
                     <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
-                        <?= $topic->getTitle() ?> par <?= $topic->getUser() ?>
+                        <?= $topic->getTitle() ?> par <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $topic->getUser()->getId() ?>" ><?= $topic->getUser() ?> </a>
                         (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>) <!-- dateTime-->
                     </a>
                                         

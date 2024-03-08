@@ -34,7 +34,7 @@
                                     <a href="index.php?ctrl=security&action=loginForm">SE CONNECTER </a>
                                     <a href="index.php?ctrl=security&action=registerForm">S'INSCRIRE</a>
                                 <?php endif; ?>
-                                <!-- <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a> -->
+                                <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a>
                             </div>
                         </nav>
                         

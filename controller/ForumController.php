@@ -105,7 +105,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         
         return [
             "view" => VIEW_DIR . "forum/listPosts.php",
-            "meta_description" => "liste des post par sujet ",
+            "meta_description" => "liste des posts par sujet ",
             "data" => [
                 "topic" => $topic,
                 "posts" => $posts
@@ -132,26 +132,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
-    
-
-    public function listPostsByUser($id) {
-
-        $postManager = new PostManager();
-        $userManager = new userManager();
-        $user = $userManager->findOneById($id);
-        $posts = $postManager->findPostsByUser($id);
-
-        return [
-            "view" => VIEW_DIR."forum/listPosts.php",
-            "meta_description" => "Liste des post par utlisateur : ".$user,
-            "data" => [
-                "user" => $user,
-                "posts" => $posts,
-            ]
-        ];
-    }
-
-
+   
 
     public function confirmDeletePost($id) {
         $postManager = new PostManager();
@@ -265,6 +246,35 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     }
 
+    public function detailProfil($id){
+        $userManager = new UserManager();
+        $user = $userManager->findOneById($id);
+
+        return [
+            "view" => VIEW_DIR . "forum/detailProfil.php",
+            "meta_description" => "detail du profil",
+            "data" => [
+                "user" => $user,
+            ]
+        ];
+    }
+     
+    public function listPostsByUser($id) {
+
+        $postManager = new PostManager();
+        $userManager = new userManager();
+        $user = $userManager->findOneById($id);
+        $posts = $postManager->findPostsByUser($id);
+
+        return [
+            "view" => VIEW_DIR."forum/detailProfil.php",
+            "meta_description" => "Liste des post par utlisateur : ".$user,
+            "data" => [
+                "user" => $user,
+                "posts" => $posts,
+            ]
+        ];
+    }
 }
 
 

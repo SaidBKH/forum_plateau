@@ -26,17 +26,6 @@ class PostManager extends Manager{
     }
 
 
-    public function findPostsByUser($id) {
-
-        $sql = "SELECT * 
-                FROM post 
-                WHERE user_id = :id";
-       
-        return  $this->getMultipleResults(
-            DAO::select($sql, ['id' => $id]), 
-            'Model\Entities\Post'        );
-    }
-
         public function updateText($id, $text) {
             $sql = "UPDATE {$this->tableName} SET text = :text WHERE id_post = :id";
             DAO::update($sql, ['text' => $text, 'id' => $id]);
@@ -47,5 +36,17 @@ class PostManager extends Manager{
             DAO::delete($sql, ['id' => $id]);
             header("Location: index.php?ctrl=forum&action=index");
 exit();
+        }
+
+        public function findPostsByUser($id) {
+
+            $sql = "SELECT * 
+            FROM ".$this-> tableName." t
+            WHERE t.user_id = :id";
+           
+            return  $this->getMultipleResults(
+                DAO::select($sql, ['id' => $id]),
+                $this->className
+            );
         }
     }
