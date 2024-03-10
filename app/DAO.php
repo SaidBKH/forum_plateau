@@ -1,4 +1,8 @@
 <?php
+//classeDAO ( "Data Access Object").  Cette classe nous aide à communiquer avec une base de données. 
+// Elle permet d'ajouter, de mettre à jour, de supprimer et de sélectionner des données dans la base de données. 
+
+
 namespace App;
 
 /**
@@ -103,4 +107,18 @@ abstract class DAO{
             echo $e->getMessage();
         }
     }
-}
+
+    //Ce code concerne une classe appelée DAO (qui signifie "Data Access Object") dans votre application PHP. Cette classe est spéciale car elle nous aide à communiquer avec une base de données. Voici ce que chaque partie du code fait :
+
+//         abstract class DAO{...}: Ici, nous définissons la classe DAO. Mais elle est un peu spéciale car nous avons utilisé le mot clé abstract, ce qui signifie que cette classe ne peut pas être utilisée directement. Elle sert plutôt de modèle pour d'autres classes qui vont l'utiliser.
+//         private static $host = 'mysql:host=127.0.0.1;port=3306';: Ces lignes définissent des informations sur la manière de se connecter à une base de données. Cela dit à notre code où se trouve la base de données et comment s'y connecter.
+//         private static $bdd;: C'est une variable spéciale qui va contenir notre connexion à la base de données une fois que nous nous serons connectés.
+//         public static function connect(){...}: Cette fonction est utilisée pour se connecter à la base de données. Elle utilise les informations de connexion définies plus tôt pour se connecter et stocke cette connexion dans la variable $bdd.
+//         public static function insert($sql){...}: Cette fonction est utilisée pour ajouter des données dans la base de données.
+//         public static function update($sql, $params){...}: Cette fonction est utilisée pour mettre à jour des données existantes dans la base de données.
+//         public static function delete($sql, $params){...}: Cette fonction est utilisée pour supprimer des données de la base de données.
+//         public static function select($sql, $params = null, bool $multiple = true):?array{...}: Cette fonction est utilisée pour sélectionner des données dans la base de données. Elle peut également prendre des paramètres pour filtrer les résultats, comme chercher tous les utilisateurs dont le nom est "John".
+//         En résumé, cette classe DAO fournit des outils pour communiquer avec une base de données. Elle permet d'ajouter, de mettre à jour, de supprimer et de sélectionner des données dans la base de données. Elle simplifie grandement le travail avec les bases de données dans votre application.
+// }
+
+
