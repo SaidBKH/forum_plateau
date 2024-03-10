@@ -10,12 +10,19 @@ namespace App;
     -- permettent de fournir une certaine implémentation de base.
 */
 
+// On definit ici la classe abstraite AbstractControlleR
+
 abstract class AbstractController{
 
+
+// methode index, implémentation de base,  elle doit être remplie avec du code par les classes enfant.
     public function index() {}
 
+
+    // sur le meme principe que l'index c'est une méthode pour rediriger l'utilisateur vers une autre page
     public function redirectTo($ctrl = null, $action = null, $id = null){
 
+// Construction de l'URL de redirection à partir des paramettres qui sont cités
         $url = $ctrl ? "?ctrl=".$ctrl : "";
         $url.= $action ? "&action=".$action : "";
         $url.= $id ? "&id=".$id : "";
@@ -23,10 +30,11 @@ abstract class AbstractController{
         header("Location: $url");
         die();
     }
-
+    // Méthode pour restreindre l'accès en fonction du rôle de l'utilisateur
     public function restrictTo($role){
-        
+        // Vérifie si l'utilisateur n'est pas connecté ou n'a pas de rôle spécifié
         if(!Session::getUser() || !Session::getUser()->hasRole($role)){
+        // Redirige l'utilisateur sur la page de connexion
             $this->redirectTo("security", "login");
         }
         return;
