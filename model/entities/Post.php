@@ -78,7 +78,8 @@ final class Post extends Entity{
     }
 
     public function getCreationDate(){
-        return $this->creationDate;
+        $date = $this->creationDate->format('d-m-Y H:i');
+        return $date;
     }
     /**
      * Set the value of id

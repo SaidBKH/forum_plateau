@@ -78,7 +78,7 @@ $statTopics = $result["data"]["statTopics"];
                         <p>category :<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>" ><?= $topic->getCategory()?></a><br>
                         <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>  
                          par :  <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $topic->getUser()->getId() ?>" ><?= $topic->getUser() ?> </a>
-                        publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i') ?></p>     
+                        publié le : <?= $topic->getCreationDate() ?></p>     
                 </li>
                 <?php endforeach; ?>
             </ul>    

@@ -97,7 +97,8 @@ public function setCategory($category){
  * Get the value of creationDate
  */ 
 public function getCreationDate(){
-    return $this->creationDate;
+    $date = $this->creationDate->format('d-m-Y H:i');
+    return $date;
 }
 
 /**

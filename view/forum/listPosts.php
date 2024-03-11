@@ -17,7 +17,7 @@
                     <li>
                         <p><?= $post->getText() ?><p><br>
                    <p> par <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $post->getUser()->getId() ?>" ><?= $post->getUser() ?> </a><p><br>
-                                (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>)
+                                (publié le <?= $topic->getCreationDate()?>)
                         <?php if($post->getUser()->getId() === App\Session::getUser()->getId()): 
                             // autorise la modification et la suppresion uniquement a l'utilsateur qui à crée le post
                             ?>

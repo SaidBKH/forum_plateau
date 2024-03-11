@@ -15,7 +15,7 @@ $topics = $result["data"]['topics'];
                 <li>
                     <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
                         <?= $topic->getTitle() ?></a> par <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $topic->getUser()->getId() ?>" ><?= $topic->getUser() ?> </a>
-                        (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>) <!-- dateTime-->
+                        (publié le <?= $topic->getCreationDate()?>) <!-- dateTime-->
                     </a>
                                         
                     <?php if($topic->getUser()->getId() === App\Session::getUser()->getId()): ?>
