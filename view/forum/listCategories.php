@@ -10,7 +10,8 @@
 <br>
         <?php
         foreach($categories as $category ){ ?>
-            <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getName() ?></a></p>
+            <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"></a>
+            <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $category->getName() ?>"></a></p>
         <?php
 
 }?>

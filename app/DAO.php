@@ -107,6 +107,7 @@ abstract class DAO{
             echo $e->getMessage();
         }
     }
+}
 
     //Ce code concerne une classe appelée DAO (qui signifie "Data Access Object") dans votre application PHP. Cette classe est spéciale car elle nous aide à communiquer avec une base de données. Voici ce que chaque partie du code fait :
 

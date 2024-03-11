@@ -77,7 +77,7 @@ $statTopics = $result["data"]["statTopics"];
                  <li>
                         <p>category :<a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $topic->getCategory()->getId() ?>" ><?= $topic->getCategory()?></a><br>
                         <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>  
-                         par : <?= $topic->getUser() ?>
+                         par :  <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $topic->getUser()->getId() ?>" ><?= $topic->getUser() ?> </a>
                         publié le : <?= $topic->getCreationDate()->format('d-m-Y H:i') ?></p>     
                 </li>
                 <?php endforeach; ?>
@@ -89,16 +89,16 @@ $statTopics = $result["data"]["statTopics"];
     <h1>STATISTICS</h1>
         <table>                
             <tr>
-                <td>Membres</td>
+                <td><a href="index.php?ctrl=forum&action=listUser">Membres :</a></td>
                 <td>
                     <?php foreach($statUsers as $stat) { 
-                    echo $stat->getReCount()." membres";                                                                 
+                    echo  $stat->getReCount()." membres";                                                                 
                     } ?>
                 </td>
             </tr>
 
             <tr>
-                <td>Topics</td>
+                <td>Topics :</td>
                 <td>
                      <?php foreach($statTopics as $stat) { 
                      echo $stat->getReCount() ." discussions";
@@ -107,7 +107,7 @@ $statTopics = $result["data"]["statTopics"];
             </tr>
 
             <tr>
-                <td>Posts</td>    
+                <td>Posts :</td>    
                 <td>
                     <?php foreach($statPosts as $stat) {
                     echo $stat->getReCount()." messages";

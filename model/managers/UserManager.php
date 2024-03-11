@@ -39,7 +39,7 @@ class UserManager extends Manager{
 
     public function updateEmail($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+            $email = filter_input( INPUT_POST, "email", FILTER_VALIDATE_EMAIL );
             if ($email !== false) {
                 $userManager = new UserManager();
                 $userManager->updateMail($id, $mail);

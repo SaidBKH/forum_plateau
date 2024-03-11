@@ -6,14 +6,15 @@ $topics = $result["data"]['topics'];
 <?php if( App\Session::getUser()){ ?>
 
 <div class = "listTopicBycategory">
+<h1 class= title>Liste des topic de la categorie : <?= $category->getName() ?></h1>
+
     <div class = "listTopicsPosts">
-        <h1>Liste des topics <?= $category->getName() ?></h1>
         <br>
         <ul>
             <?php foreach ($topics as $topic): ?>
                 <li>
                     <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
-                        <?= $topic->getTitle() ?> par <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $topic->getUser()->getId() ?>" ><?= $topic->getUser() ?> </a>
+                        <?= $topic->getTitle() ?></a> par <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $topic->getUser()->getId() ?>" ><?= $topic->getUser() ?> </a>
                         (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>) <!-- dateTime-->
                     </a>
                                         

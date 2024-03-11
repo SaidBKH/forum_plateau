@@ -8,13 +8,15 @@
 <?php if( App\Session::getUser()){?>
 
     <div class = "listPostsByTopic">
+    <h1 class="title"> TOPIC : <?= $topic->getTitle() ?></h1>
         <div class = "listTopicsPosts">
-            <h1><?= $topic->getTitle() ?></h1>
+            
             <ul>
 
                 <?php foreach ($posts as $post): ?>
                     <li>
-                        <?= $post->getText() ?> par <?= $post->getUser() ?>
+                        <p><?= $post->getText() ?><p><br>
+                   <p> par <a href="index.php?ctrl=forum&action=detailProfil&id=<?= $post->getUser()->getId() ?>" ><?= $post->getUser() ?> </a><p><br>
                                 (publié le <?= $topic->getCreationDate()->format('d-m-Y H:i')?>)
                         <?php if($post->getUser()->getId() === App\Session::getUser()->getId()): 
                             // autorise la modification et la suppresion uniquement a l'utilsateur qui à crée le post

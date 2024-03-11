@@ -1,9 +1,9 @@
-
 <?php
 // L'autoloader c'est une classe qui va charger automatiquement les classes .
 // pour pas avoir besoin de les inclure manuellement à chaque fois. 
 
-namespace App;
+namespace App; 
+
 //la classe Autoloader fait partie de l'espace de noms App.
 
 //Définit la classe
@@ -49,3 +49,4 @@ class Autoloader{
 		}
 	}
 }
+?>

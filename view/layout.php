@@ -34,7 +34,7 @@
                                     <a href="index.php?ctrl=security&action=loginForm">SE CONNECTER </a>
                                     <a href="index.php?ctrl=security&action=registerForm">S'INSCRIRE</a>
                                 <?php endif; ?>
-                                <a href="index.php?ctrl=forum&action=listUser">Liste des utilisateurs</a>
+
                             </div>
                         </nav>
                         
@@ -45,6 +45,8 @@
                 </main>
             </div>
             <footer>
+            <div class ="footer">
+                <br>
                 <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Règlement du forum</a> - <a href="#">Mentions légales</a></p>
             </footer>
         </div>
@@ -83,4 +85,6 @@
         </script>
         <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
     </body>
+
+
 </html>
