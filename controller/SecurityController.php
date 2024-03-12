@@ -4,6 +4,8 @@ namespace Controller;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
+use Model\Managers\PostManager;
+
 use Model\Entities\User;
 
 class SecurityController extends AbstractController{
@@ -111,7 +113,7 @@ class SecurityController extends AbstractController{
 
         $this->redirectTo("home", "index");
         
- 
-    
     }
+
+
 }

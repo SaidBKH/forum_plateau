@@ -1,7 +1,9 @@
 <?php 
 use App\Session;
 
-?>
+    $posts = $result["data"]['posts']; 
+
+    ?>
 
     <div id="profil">
     <h1> Profil de <?= $_SESSION["user"]->getNickName() ?></h1>
@@ -17,5 +19,15 @@ use App\Session;
         </div>
 
     
-
-
+        <div class="listPostByUser">
+            <h1>LISTE DES POSTS</h1>
+            <br>
+                <ul>
+                    <?php foreach($posts as $post ){ ?>
+                    <li><p> category : <?= $post->getTopic()->getCategory()?><p>
+                      <?= $post->getText()?>
+                     publié le : <?= $post->getCreationDate()?></li>
+                    <?php }?>
+                </ul>
+        </div>
+ </div>

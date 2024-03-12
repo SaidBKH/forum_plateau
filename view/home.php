@@ -70,7 +70,7 @@ $statTopics = $result["data"]["statTopics"];
 
     <div class="lastTopic">
         <br>
-            <h1>LAST TOPIC</h1>
+            <h1>DERNIERS SUJETS</h1>
         <br>
             <ul>
             <?php foreach ($latestTopics as $topic): ?>
@@ -86,7 +86,7 @@ $statTopics = $result["data"]["statTopics"];
 </div>
 
 <div class="statistics">
-    <h1>STATISTICS</h1>
+    <h1>STATISTIQUES</h1>
         <table>                
             <tr>
                 <td><a href="index.php?ctrl=forum&action=listUser">Membres :</a></td>

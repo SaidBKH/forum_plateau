@@ -20,7 +20,7 @@
                     <?php foreach($posts as $post ){ ?>
                     <li><p> category : <?= $post->getTopic()->getCategory()?><p>
                       <?= $post->getText()?>
-                     publié le : <?= $post->getCreationDate()->format('d-m-Y H:i')?></li>
+                     publié le : <?= $post->getCreationDate()?></li>
                     <?php }?>
                 </ul>
         </div>

@@ -29,26 +29,31 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
     
-  
+      // Fonction pour ajouter un nouveau message à une discussion
     public function addPost() {
-
-        $postManager = new PostManager();   
-
+    // Créer une nouvelle instance de PostManager pour gérer les messages
+        $postManager = new PostManager(); 
+      
+        // SI Vérifier si la requête est un formulaire POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            // Récupère et nettoye les données du formulaire empeche faille XSS
             $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_SPECIAL_CHARS);
             $topicId = $_POST['topic_id'];
 
+            // Ajouter un nouveau message avec les données récupérées
             $postManager->add([
                             "text" => $text,
                             "topic_id" => $topicId,
                             "user_id" => $_SESSION['user']->getId()
                            
             ]);
-                    $this->redirectTo("forum", "listPostsByTopic", $topicId);
+
+           // Rediriger vers la liste des messages de la discussion après l'ajout du nouveau message
+            $this->redirectTo("forum", "listPostsByTopic", $topicId);
         }
      } 
-
+    // Fonction pour ajouter une nouvelle discussion dans une catégorie, sur le meme principe que addPost
      public function addTopic() {
 
         $topicManager = new TopicManager();   
@@ -201,7 +206,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             if ($text !== false) {
                 $postManager = new PostManager();
                 $postManager->updateText($id, $text);
-                header("Location: index.php?ctrl=forum&action=index");
+                header("Location: index.php");
               exit();
             }
         }
@@ -226,7 +231,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             if ($title !== false) {
                 $topicManager = new TopicManager();
                 $topicManager->updateTitle($id, $title);
-                header("Location: index.php?ctrl=forum&action=index");
+                header("Location: index.php");
               exit();
             }
         }
@@ -236,13 +241,13 @@ class ForumController extends AbstractController implements ControllerInterface{
         //var_dump($id);die;
         $topicManager = new TopicManager();
         $topicManager->lockTopic($id);
-        $this->redirectTo("forum", "listTopics");
+        $this->redirectTo("view", "home");
     }
 
     public function unlockTopic($id) {
         $topicManager = new TopicManager();
         $topicManager->unlockTopic($id);
-        $this->redirectTo("forum", "listTopics");
+        $this->redirectTo("view", "home");
 
     }
 
