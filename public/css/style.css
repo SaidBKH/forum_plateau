@@ -1,446 +1,250 @@
-* {
+body {
+    
+   
+    background-image: url('../img/fond2.jpg');  
+    background-size: cover; /* Couvre tout l'écran avec l'image */
+    background-repeat: no-repeat; /* Ne répète pas l'image */
+    background-position: center center; /* Centre l'image */
+    background-attachment: fixed; /* Fixe l'image même en scrollant */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-h1 {
-    padding-left: 10px;
-    font-size: 25px;
-    color: rgb(255, 255, 255);
+    color: #fefefe;
+    
 }
 
+img#forum-logo{
+    display: flex;
+    height: 160px;
+    margin-top: 20px;
+}
+#forum {
+        max-width: 1200px;
+        margin: 0 auto;
+
+}
+
+
+#wrapper {
+    margin: 0 auto;
+}
+
+/* Header & Navigation */
 header {
-    display: flex;
-    justify-content: center;
-    background-color: #005747; 
-    padding: 10px; 
+    background-color: #000000;
+    color: white;
+}
+#nav-left a{
+    padding-left: 5px;
+    border-left: white solid 2px;
 
 }
-
 nav {
-    height: 100%;
     width: 100%;
-    color: rgb(255, 255, 255); 
-    padding: 5px 0; 
-}
-
-
-#nav-right{ display: flex;
-    justify-content: flex-end;
-
-}
-#nav-left{ padding-left: 20px;
-  
-}
-
-#nav-left a,
-#nav-right a {
-    color: white; 
-    margin-right: 10px; 
-    text-decoration: none; 
-}
-/* */
-
-
-#loginForm { 
-    flex-direction: column;
-    align-items: center;
-    height: 200px;
-   width: 50%;
-    background-color: ##005747;
-    padding-right: 20px;
-    color: white;
-    display: flex;
+    padding-top: 30px;
+border-bottom: #fefefe solid;
     justify-content: center;
-}
-
-#accueil{
-    background-color: #006A75; 
-    width: 100%;
-padding-top: 10px;
-padding-bottom: 20px;
+    height: 80px;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
 }
 
-#loginRegister{
-    background-color: #006A75; 
-    text-decoration: none;
-    flex-direction:column;
-    align-items: center;
-    display: flex;
-   justify-content: center;  
-}
-
-input{margin-bottom: 10px;
-}
-
-
-button {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 5px;
-    color: white;
-    background-color: #006A75;
-}
-
-.registerButton a{
-    padding: 10px;
+nav a {
     color: white;
     text-decoration: none;
-   
+    margin: 0 15px;
+    font-size: 12px;
 }
 
-.registerButton {
-    padding-bottom: 20px;
-   
+nav a:hover {
+    color: #ff9900;
 }
 
-.loginPage{
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    background-color: #006A75;
-    display: flex;
+
+
+
+#accueil { 
+    border-radius: 10px;
     justify-content: center;
+    margin: 50px;
+    background-color: #000000;
 }
 
-.registerPage{
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    background-color: #006A75;
-    display: flex;
-    justify-content: center;
-}
-
-#registerForm { 
-    flex-direction: column;
-    align-items: center;
-    height: 250px;
-   width: 50%;
-    background-color: #006A75;
-    padding-right: 20px;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
-
-
-.listTopicsPosts{
-    display: flex;
-  justify-content: center;
-    padding-left: 10px;
-    padding-top: 10px; 
-    font-size: 10px;
-    padding-bottom: 20px;
-    background-color: #006A75;
-}
-
-.listTopicsPosts ul{
-    width: 80%;
-  
-
-}
-
-.listTopicsPosts a{
-    font-size: 20px;
-    padding-left: 10px;
-    width: 100%;   
-    color:rgb(3, 3, 3);
-    text-decoration: none
-}
-
-
-.listTopicsPosts ul li{
-
-    list-style-type: none;
-    padding-left: 10px;
-    padding-bottom:20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    font-size: 20px;
-    margin-top: 5px;
-    border:solid 1px rgb(255, 255, 255);
-background-color: rgb(255, 255, 255);
-}
-
-.listTopicsPosts ul li :hover{ 
-    color: rgb(0, 0, 0);
-    width: 100%;
-}
-
-.addTopicPost {
-    font-size: 20px;
-    padding-top: 20px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #006A75;
-}
-
-.listTopicsPosts ul li :hover{ 
-    color: rgb(0, 0, 0);
-    width: 100%;
-}
-
-.edit { 
-    flex-direction: column;
-    align-items: center;
-    height: 200px;
-    background-color: #006A75;
-    padding-right: 20px;
-    color: white;
-    display: flex;
-    justify-content: center;
-}
-
-
-
-.homeList{
-    background-color: #006A75;
-    display: flex;
- width: 100%;
-}
-
-.listCategory {
-    padding-top: 20px;
-    height: 432px;
-    background-color: #006A75;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;   
-    width: 50%;
-
-}
-.listCategory ul li{
-    
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid 1px black;
-    background: #005747;
-}
-.listCategory a{
-    color: white;
-    
-}
-.listCategory ul {
-    width: 80%;
-    text-decoration: none
-
-}
-.homeList a{
-    text-decoration: none;
-}
-.listCategory ul a:hover{ 
-  color: red;
-}
-
-.lastTopic{
-    background-color: ##005747;
-  align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
- 
-}
-
-.lastTopic a{
-    color: rgb(255, 255, 255)
-}
-
-.lastTopic ul li{
-    background: #006A75;
-}
-.lastTopic ul {
-    list-style-type: none;
-    padding-bottom: 20px;
-    height: 100%;
-    width: 80%;
-}
-
-.lastTopic ul li p{
-color: black;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: solid 1px black;
-    width: 100%;
-    background: #005747;
-}
-
-.statistics{
-    display: flex;
-    background:  #005747; 
-    flex-direction: column;
-}
-.statistics a{
-    color: white;
-    text-decoration: none;
-}
-.statistics a:hover{
-    color: rgb(158, 15, 15);
-    text-decoration: none;
-}
-
-.statistics tbody{
-padding-bottom: 20px;
-    align-items: center;
-    flex-direction:column;
-    display: flex;
-    justify-content: center;
-
-
-}
-
-.statistics h1{
-    padding-top: 20px;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-}
-
-.statistics tr {
-    color: white;
-    align-items: center;
-    padding-left: 10px;
-    background-color:#006A75;;
-    flex-direction: column;
-    display: flex;
-    width: 20%;
-    border: solid 1px black;
-    color: rgb(255, 255, 255);
-    justify-content: center; 
-
-}
-
-.loginOrRegister {
-    height: 100px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    background-color: #1006A75;
-}
-
-.loginOrRegister a{
-    text-decoration: none;
-
-    color: red;
-}
-
-.detailProfil{
-    width: 100%;
-    display: flex;
-    justify-content:center;
-    flex-direction: column;
-    align-items: center;
-}
-
-#profil {
-     background-color: #006A75;
-    padding-top: 20px;
-    padding-bottom:20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-#profil p{
-    color: white;
-}
-
-.detail{
-    display: flex;
-    justify-content:center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background-color:  #006A75;
-}
-
-.detail p{
-    font-size: 20px;
-    color: white;
-}
-
-
-.footer{ 
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background-color: rgb(5, 22, 19); 
-}
-.footer p{ 
-    color: white;
-    
-}
-.footer a{ text-decoration: none;
-    color: white;
-}
-
-.listPostByUser{
-    width: 100%;
-    background-color: #006A75;
-}
-.listPostByUser ul li{
-    border: solid 1px black;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
-.listPostByUser p {
-    padding-left: 20px;
-}
-
-
-#mainpage {
-    background-color:  #006A75; 
-    min-height: calc(100vh - 30px);
-}
-
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.listUser a{
-    color: white;
-    text-decoration: none;
-}
-
-.listUser a:hover{
-    color: rgb(255, 0, 0);
-    text-decoration: none;
-}
-
-.listUser {
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#accueil h1 {
+    margin: 0; 
+    padding-top: 50px; 
+    font-size: 1.8rem;
+    color: #ffffff;
     text-align: center;
 }
 
-.listUser p{
-    padding-bottom: 10px;
-    padding-top: 10px;
-    background-color: #006A75;
+
+#accueil p{ 
+    text-align:center;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 1rem;
+}
+
+#loginRegister {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#loginForm, .registerButton {
+    justify-content: center;
+    background-color: #484D6D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 45%;
+}
+
+#loginForm h2, .registerButton h2 {
+    text-align: center;
+    color: #333;
+}
+
+#loginForm input[type="email"], 
+#loginForm input[type="password"] {
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#loginForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#loginForm button:hover {
+    background-color: #ff9900;
+}
+
+.registerButton button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registerButton button:hover {
+    background-color: #333;
+}
+
+/* Home list section */
+.homeList {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.listCategory, .lastTopic {
+    width: 45%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.listCategory h1, .lastTopic h1 {
+    color: #333;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.listCategory ul, .lastTopic ul {
+    list-style: none;
+    padding: 0;
+}
+
+.listCategory ul li, .lastTopic ul li {
+    margin: 10px 0;
+}
+
+.listCategory ul li a, .lastTopic ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.listCategory ul li a:hover, .lastTopic ul li a:hover {
+    color: #ff9900;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ff9900;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.statistics {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.statistics h1 {
+    font-size: 22px;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.statistics table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.statistics table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #loginRegister {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .homeList {
+        flex-direction: column;
+    }
+
+    .listCategory, .lastTopic {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
